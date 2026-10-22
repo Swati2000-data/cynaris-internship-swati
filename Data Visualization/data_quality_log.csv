@@ -1,0 +1,7 @@
+Issue,Action,Reason
+Missing values,Profiled missing counts and percentages,Understand data completeness before treatment
+Duplicate records,Removed 5268 exact duplicate rows,Prevent duplicate transaction counting
+Inconsistent strings,Trimmed whitespace and standardised selected casing,Improve categorical consistency
+Data types,Converted date and numeric columns,Support reliable analysis
+Missing-value imputation,"Demonstrated mean, median, mode and forward-fill",Compare imputation methods before making final decisions
+Outliers,Detected using IQR and created a separate capped copy,Evaluate extreme values without losing original records

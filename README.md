@@ -1,1 +1,0 @@
-# cynaris-internship-swati

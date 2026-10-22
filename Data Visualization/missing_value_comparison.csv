@@ -1,0 +1,9 @@
+,Before_Cleaning,After_Cleaning,Difference
+InvoiceNo,0,0,0
+StockCode,0,0,0
+Description,1454,1455,-1
+Quantity,0,0,0
+InvoiceDate,0,0,0
+UnitPrice,0,0,0
+CustomerID,135080,135037,43
+Country,0,0,0
