@@ -1,0 +1,57 @@
+dataContractSpecification: 0.9.3
+id: online-retail-v1
+info:
+  title: Online Retail Data Contract
+  version: 1.0.0
+  status: draft
+  description: Data quality rules for the Online Retail dataset used by a BI dashboard.
+roles:
+- role: producer
+  name: Data Analyst
+- role: consumer
+  name: BI Dashboard
+servers:
+- server: local
+  type: filesystem
+  path: ./
+models:
+  online_retail:
+    description: Retail transaction-level records.
+    type: table
+    fields:
+      InvoiceNo:
+        type: string
+        required: true
+        description: Invoice identifier.
+      StockCode:
+        type: string
+        required: true
+        description: Product identifier.
+      Description:
+        type:
+        - string
+        - 'null'
+        required: false
+        description: Product description.
+      Quantity:
+        type: integer
+        required: true
+        description: Quantity sold or returned.
+      InvoiceDate:
+        type: datetime
+        required: true
+        description: Transaction date and time.
+      UnitPrice:
+        type: number
+        required: true
+        description: Unit price; negative values require investigation.
+      CustomerID:
+        type:
+        - string
+        - 'null'
+        required: false
+        description: Customer identifier; treat as confidential.
+      Country:
+        type: string
+        required: true
+        description: Customer country.

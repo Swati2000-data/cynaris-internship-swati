@@ -1,0 +1,7 @@
+Dimension,Score_Percent,Assessment,Limitation
+Completeness,96.82,Percentage of non-missing cells,Does not distinguish optional from required fields
+Uniqueness,100.0,Rows without exact duplicates,Repeated invoice numbers are allowed
+Validity,99.34,"Selected quantity, price and date rules",Negative quantities may represent returns
+Consistency,100.0,Country formatting and date parseability,Only selected consistency checks are measured
+Accuracy,100.0,Unit-price validity proxy only,True accuracy requires a trusted reference
+Timeliness,,Not scored,No agreed freshness SLA or ingestion timestamp
