@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Online Retail Data Quality Validation Report</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 30px; color: #222; }
+h1, h2 { color: #17365D; }
+.summary { background: #f1f5f9; padding: 14px; margin: 15px 0; }
+table { border-collapse: collapse; width: 100%; margin-bottom: 25px; }
+th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+th { background: #17365D; color: white; }
+</style>
+</head>
+<body>
+<h1>Online Retail Data Quality Validation Report</h1>
+<p>Generated: 2026-10-24 12:37</p>
+<p>Dataset: cleaned_online_retail.csv</p>
+<p>Dataset size: 536,641 rows × 8 columns</p>
+
+<div class="summary">
+<h2>Original Dataset Summary</h2>
+<p>Total expectations: 8</p>
+<p>Passed: 5 | Failed: 3</p>
+<p>Overall status: FAIL — review flagged records</p>
+</div>
+
+<h2>Original Dataset Validation</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Expectation</th>
+      <th>Column</th>
+      <th>Status</th>
+      <th>Unexpected_Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>expect_column_values_to_not_be_null</td>
+      <td>InvoiceNo</td>
+      <td>PASS</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>expect_column_values_to_not_be_null</td>
+      <td>StockCode</td>
+      <td>PASS</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>expect_column_values_to_not_be_null</td>
+      <td>Quantity</td>
+      <td>PASS</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>expect_column_values_to_be_between</td>
+      <td>Quantity</td>
+      <td>FAIL</td>
+      <td>10587</td>
+    </tr>
+    <tr>
+      <td>expect_column_values_to_be_between</td>
+      <td>UnitPrice</td>
+      <td>FAIL</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>expect_column_values_to_not_be_null</td>
+      <td>InvoiceDate</td>
+      <td>PASS</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>expect_column_values_to_not_be_null</td>
+      <td>Country</td>
+      <td>PASS</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>expect_column_values_to_not_be_null</td>
+      <td>CustomerID</td>
+      <td>FAIL</td>
+      <td>135037</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Error-Injection Test</h2>
+<p>This test uses a separate copy of the dataset with intentionally introduced errors.</p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Expectation</th>
+      <th>Column</th>
+      <th>Status</th>
+      <th>Unexpected_Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>expect_column_values_to_not_be_null</td>
+      <td>InvoiceNo</td>
+      <td>FAIL</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>expect_column_values_to_not_be_null</td>
+      <td>StockCode</td>
+      <td>PASS</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>expect_column_values_to_not_be_null</td>
+      <td>Quantity</td>
+      <td>PASS</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>expect_column_values_to_be_between</td>
+      <td>Quantity</td>
+      <td>FAIL</td>
+      <td>10587</td>
+    </tr>
+    <tr>
+      <td>expect_column_values_to_be_between</td>
+      <td>UnitPrice</td>
+      <td>FAIL</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>expect_column_values_to_not_be_null</td>
+      <td>InvoiceDate</td>
+      <td>FAIL</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>expect_column_values_to_not_be_null</td>
+      <td>Country</td>
+      <td>PASS</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>expect_column_values_to_not_be_null</td>
+      <td>CustomerID</td>
+      <td>FAIL</td>
+      <td>135037</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Recommendations</h2>
+<ul>
+<li>Investigate negative quantities to distinguish returns from data errors.</li>
+<li>Review negative unit prices against business rules.</li>
+<li>Confirm whether CustomerID is mandatory for every transaction.</li>
+<li>Monitor missing values and validation failures regularly.</li>
+</ul>
+</body>
+</html>

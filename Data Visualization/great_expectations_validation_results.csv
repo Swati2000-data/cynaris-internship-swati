@@ -1,0 +1,9 @@
+Expectation,Column,Status,Unexpected_Count
+expect_column_values_to_not_be_null,InvoiceNo,PASS,0
+expect_column_values_to_not_be_null,StockCode,PASS,0
+expect_column_values_to_not_be_null,Quantity,PASS,0
+expect_column_values_to_be_between,Quantity,FAIL,10587
+expect_column_values_to_be_between,UnitPrice,FAIL,2
+expect_column_values_to_not_be_null,InvoiceDate,PASS,0
+expect_column_values_to_not_be_null,Country,PASS,0
+expect_column_values_to_not_be_null,CustomerID,FAIL,135037

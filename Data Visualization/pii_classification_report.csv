@@ -1,0 +1,9 @@
+Column,Classification,PII,Risk,Protection
+InvoiceNo,Internal business data,Not directly identifying,May reveal transaction activity,Restrict access where needed
+StockCode,Internal business data,No obvious direct PII,May reveal product information,Role-based access
+Description,Review required,"Potentially, if free text contains identifiers",Unexpected personal details in text,Review and redact identifiers if found
+Quantity,Internal business data,No obvious direct PII,Low personal-data risk,Standard access controls
+InvoiceDate,Internal business data,Potentially identifying when linked to other data,Transaction timing patterns,Limit access or aggregate dates for reports
+UnitPrice,Internal business data,No obvious direct PII,Commercial sensitivity,Restrict access where appropriate
+CustomerID,Confidential customer identifier,Potentially identifying when linked to other data,Customer activity may be linked across transactions,Tokenisation or pseudonymisation; restrict access
+Country,General business data,Not directly identifying by itself,May contribute to identification when combined with other data,Aggregate where appropriate
