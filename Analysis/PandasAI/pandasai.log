@@ -1,0 +1,1329 @@
+2026-11-10 13:20:49 [INFO] Question: How many rows are present in this dataset?
+2026-11-10 13:20:49 [INFO] Running PandasAI with litellm LLM...
+2026-11-10 13:20:49 [INFO] Prompt ID: 540e24b6-3e9f-4f50-ab7c-7c2fb1890bdc
+2026-11-10 13:20:49 [INFO] Generating new code...
+2026-11-10 13:20:49 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_c17e78ac3754ff4e222b7a6912087906" columns="[{"name": "City", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "Date", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "PM2_5", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "PM10", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NO", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NO2", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NOx", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NH3", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "CO", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "SO2", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "O3", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Benzene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Toluene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Xylene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "AQI", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "AQI_Bucket", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="29531x16">
+City,Date,PM2_5,PM10,NO,NO2,NOx,NH3,CO,SO2,O3,Benzene,Toluene,Xylene,AQI,AQI_Bucket
+Ahmedabad,2015-01-01,,,0.92,18.22,17.15,,0.92,27.64,133.36,0.0,0.02,0.0,,
+Ahmedabad,2015-01-02,,,0.97,15.69,16.46,,0.97,24.55,34.06,3.68,5.5,3.77,,
+Ahmedabad,2015-01-03,,,17.4,19.3,29.7,,17.4,29.07,30.7,6.8,16.4,2.25,,
+Ahmedabad,2015-01-04,,,1.7,18.48,17.97,,1.7,18.59,36.08,4.43,10.14,1.0,,
+Ahmedabad,2015-01-05,,,22.1,21.42,37.76,,22.1,39.33,39.31,7.01,18.89,2.78,,
+</table>
+
+
+</tables>
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ How many rows are present in this dataset?
+
+At the end, declare "result" variable as a dictionary of type and value in the following format:
+
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2026-11-10 13:20:56 [INFO] An error occurred during code generation: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+2026-11-10 13:20:56 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3392, in post
+    response: Final = client.post(
+                      ^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 1567, in post
+    _raise_masked_sync_error(e, stream)
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 546, in _raise_masked_sync_error
+    raise MaskedHTTPStatusError(e, message=_text, text=_text) from None
+litellm.llms.custom_httpx.http_handler.MaskedHTTPStatusError: Client error '404 Not Found' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6149, in completion
+    response = _complete_vertex_ai_beta(_dispatch_ctx)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 3688, in _complete_vertex_ai_beta
+    return vertex_chat_completion.completion(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3410, in completion
+    first_response: Final = post(data)
+                            ^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3397, in post
+    raise VertexAIError(
+litellm.llms.vertex_ai.common_utils.VertexAIError: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai_litellm\litellm.py", line 68, in call
+    completion(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\chat_completions\dispatch.py", line 91, in completion
+    return _DISPATCH.run(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\rust_bridge\dispatch.py", line 81, in run
+    return python(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 2041, in wrapper
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 1890, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6230, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2800, in exception_type
+    raise e  # it's already mapped
+    ^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2611, in exception_type
+    _map_vertex_exception(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 1370, in _map_vertex_exception
+    raise NotFoundError(
+litellm.exceptions.NotFoundError: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+2026-11-10 13:20:56 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3392, in post
+    response: Final = client.post(
+                      ^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 1567, in post
+    _raise_masked_sync_error(e, stream)
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 546, in _raise_masked_sync_error
+    raise MaskedHTTPStatusError(e, message=_text, text=_text) from None
+litellm.llms.custom_httpx.http_handler.MaskedHTTPStatusError: Client error '404 Not Found' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6149, in completion
+    response = _complete_vertex_ai_beta(_dispatch_ctx)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 3688, in _complete_vertex_ai_beta
+    return vertex_chat_completion.completion(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3410, in completion
+    first_response: Final = post(data)
+                            ^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3397, in post
+    raise VertexAIError(
+litellm.llms.vertex_ai.common_utils.VertexAIError: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai_litellm\litellm.py", line 68, in call
+    completion(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\chat_completions\dispatch.py", line 91, in completion
+    return _DISPATCH.run(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\rust_bridge\dispatch.py", line 81, in run
+    return python(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 2041, in wrapper
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 1890, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6230, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2800, in exception_type
+    raise e  # it's already mapped
+    ^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2611, in exception_type
+    _map_vertex_exception(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 1370, in _map_vertex_exception
+    raise NotFoundError(
+litellm.exceptions.NotFoundError: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+2026-11-10 13:20:56 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_c17e78ac3754ff4e222b7a6912087906" columns="[{"name": "City", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "Date", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "PM2_5", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "PM10", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NO", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NO2", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NOx", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NH3", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "CO", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "SO2", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "O3", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Benzene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Toluene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Xylene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "AQI", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "AQI_Bucket", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="29531x16">
+City,Date,PM2_5,PM10,NO,NO2,NOx,NH3,CO,SO2,O3,Benzene,Toluene,Xylene,AQI,AQI_Bucket
+Ahmedabad,2015-01-01,,,0.92,18.22,17.15,,0.92,27.64,133.36,0.0,0.02,0.0,,
+Ahmedabad,2015-01-02,,,0.97,15.69,16.46,,0.97,24.55,34.06,3.68,5.5,3.77,,
+Ahmedabad,2015-01-03,,,17.4,19.3,29.7,,17.4,29.07,30.7,6.8,16.4,2.25,,
+Ahmedabad,2015-01-04,,,1.7,18.48,17.97,,1.7,18.59,36.08,4.43,10.14,1.0,,
+Ahmedabad,2015-01-05,,,22.1,21.42,37.76,,22.1,39.33,39.31,7.01,18.89,2.78,,
+</table>
+
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+The user asked the following question:
+### QUERY
+ How many rows are present in this dataset?
+
+You generated the following Python code:
+None
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3392, in post
+    response: Final = client.post(
+                      ^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 1567, in post
+    _raise_masked_sync_error(e, stream)
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 546, in _raise_masked_sync_error
+    raise MaskedHTTPStatusError(e, message=_text, text=_text) from None
+litellm.llms.custom_httpx.http_handler.MaskedHTTPStatusError: Client error '404 Not Found' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6149, in completion
+    response = _complete_vertex_ai_beta(_dispatch_ctx)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 3688, in _complete_vertex_ai_beta
+    return vertex_chat_completion.completion(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3410, in completion
+    first_response: Final = post(data)
+                            ^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3397, in post
+    raise VertexAIError(
+litellm.llms.vertex_ai.common_utils.VertexAIError: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai_litellm\litellm.py", line 68, in call
+    completion(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\chat_completions\dispatch.py", line 91, in completion
+    return _DISPATCH.run(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\rust_bridge\dispatch.py", line 81, in run
+    return python(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 2041, in wrapper
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 1890, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6230, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2800, in exception_type
+    raise e  # it's already mapped
+    ^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2611, in exception_type
+    _map_vertex_exception(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 1370, in _map_vertex_exception
+    raise NotFoundError(
+litellm.exceptions.NotFoundError: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2026-11-10 13:20:57 [INFO] An error occurred during code generation: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+2026-11-10 13:20:57 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3392, in post
+    response: Final = client.post(
+                      ^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 1567, in post
+    _raise_masked_sync_error(e, stream)
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 546, in _raise_masked_sync_error
+    raise MaskedHTTPStatusError(e, message=_text, text=_text) from None
+litellm.llms.custom_httpx.http_handler.MaskedHTTPStatusError: Client error '404 Not Found' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6149, in completion
+    response = _complete_vertex_ai_beta(_dispatch_ctx)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 3688, in _complete_vertex_ai_beta
+    return vertex_chat_completion.completion(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3410, in completion
+    first_response: Final = post(data)
+                            ^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3397, in post
+    raise VertexAIError(
+litellm.llms.vertex_ai.common_utils.VertexAIError: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai_litellm\litellm.py", line 68, in call
+    completion(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\chat_completions\dispatch.py", line 91, in completion
+    return _DISPATCH.run(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\rust_bridge\dispatch.py", line 81, in run
+    return python(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 2041, in wrapper
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 1890, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6230, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2800, in exception_type
+    raise e  # it's already mapped
+    ^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2611, in exception_type
+    _map_vertex_exception(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 1370, in _map_vertex_exception
+    raise NotFoundError(
+litellm.exceptions.NotFoundError: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+2026-11-10 13:20:57 [INFO] Retrying Code Generation (1/3)...
+2026-11-10 13:20:57 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3392, in post
+    response: Final = client.post(
+                      ^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 1567, in post
+    _raise_masked_sync_error(e, stream)
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 546, in _raise_masked_sync_error
+    raise MaskedHTTPStatusError(e, message=_text, text=_text) from None
+litellm.llms.custom_httpx.http_handler.MaskedHTTPStatusError: Client error '404 Not Found' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6149, in completion
+    response = _complete_vertex_ai_beta(_dispatch_ctx)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 3688, in _complete_vertex_ai_beta
+    return vertex_chat_completion.completion(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3410, in completion
+    first_response: Final = post(data)
+                            ^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3397, in post
+    raise VertexAIError(
+litellm.llms.vertex_ai.common_utils.VertexAIError: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai_litellm\litellm.py", line 68, in call
+    completion(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\chat_completions\dispatch.py", line 91, in completion
+    return _DISPATCH.run(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\rust_bridge\dispatch.py", line 81, in run
+    return python(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 2041, in wrapper
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 1890, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6230, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2800, in exception_type
+    raise e  # it's already mapped
+    ^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2611, in exception_type
+    _map_vertex_exception(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 1370, in _map_vertex_exception
+    raise NotFoundError(
+litellm.exceptions.NotFoundError: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+2026-11-10 13:20:57 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_c17e78ac3754ff4e222b7a6912087906" columns="[{"name": "City", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "Date", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "PM2_5", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "PM10", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NO", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NO2", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NOx", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NH3", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "CO", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "SO2", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "O3", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Benzene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Toluene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Xylene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "AQI", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "AQI_Bucket", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="29531x16">
+City,Date,PM2_5,PM10,NO,NO2,NOx,NH3,CO,SO2,O3,Benzene,Toluene,Xylene,AQI,AQI_Bucket
+Ahmedabad,2015-01-01,,,0.92,18.22,17.15,,0.92,27.64,133.36,0.0,0.02,0.0,,
+Ahmedabad,2015-01-02,,,0.97,15.69,16.46,,0.97,24.55,34.06,3.68,5.5,3.77,,
+Ahmedabad,2015-01-03,,,17.4,19.3,29.7,,17.4,29.07,30.7,6.8,16.4,2.25,,
+Ahmedabad,2015-01-04,,,1.7,18.48,17.97,,1.7,18.59,36.08,4.43,10.14,1.0,,
+Ahmedabad,2015-01-05,,,22.1,21.42,37.76,,22.1,39.33,39.31,7.01,18.89,2.78,,
+</table>
+
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+The user asked the following question:
+### QUERY
+ How many rows are present in this dataset?
+
+You generated the following Python code:
+None
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3392, in post
+    response: Final = client.post(
+                      ^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 1567, in post
+    _raise_masked_sync_error(e, stream)
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 546, in _raise_masked_sync_error
+    raise MaskedHTTPStatusError(e, message=_text, text=_text) from None
+litellm.llms.custom_httpx.http_handler.MaskedHTTPStatusError: Client error '404 Not Found' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6149, in completion
+    response = _complete_vertex_ai_beta(_dispatch_ctx)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 3688, in _complete_vertex_ai_beta
+    return vertex_chat_completion.completion(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3410, in completion
+    first_response: Final = post(data)
+                            ^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3397, in post
+    raise VertexAIError(
+litellm.llms.vertex_ai.common_utils.VertexAIError: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai_litellm\litellm.py", line 68, in call
+    completion(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\chat_completions\dispatch.py", line 91, in completion
+    return _DISPATCH.run(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\rust_bridge\dispatch.py", line 81, in run
+    return python(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 2041, in wrapper
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 1890, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6230, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2800, in exception_type
+    raise e  # it's already mapped
+    ^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2611, in exception_type
+    _map_vertex_exception(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 1370, in _map_vertex_exception
+    raise NotFoundError(
+litellm.exceptions.NotFoundError: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2026-11-10 13:20:57 [INFO] An error occurred during code generation: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+2026-11-10 13:20:57 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3392, in post
+    response: Final = client.post(
+                      ^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 1567, in post
+    _raise_masked_sync_error(e, stream)
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 546, in _raise_masked_sync_error
+    raise MaskedHTTPStatusError(e, message=_text, text=_text) from None
+litellm.llms.custom_httpx.http_handler.MaskedHTTPStatusError: Client error '404 Not Found' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6149, in completion
+    response = _complete_vertex_ai_beta(_dispatch_ctx)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 3688, in _complete_vertex_ai_beta
+    return vertex_chat_completion.completion(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3410, in completion
+    first_response: Final = post(data)
+                            ^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3397, in post
+    raise VertexAIError(
+litellm.llms.vertex_ai.common_utils.VertexAIError: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai_litellm\litellm.py", line 68, in call
+    completion(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\chat_completions\dispatch.py", line 91, in completion
+    return _DISPATCH.run(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\rust_bridge\dispatch.py", line 81, in run
+    return python(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 2041, in wrapper
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 1890, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6230, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2800, in exception_type
+    raise e  # it's already mapped
+    ^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2611, in exception_type
+    _map_vertex_exception(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 1370, in _map_vertex_exception
+    raise NotFoundError(
+litellm.exceptions.NotFoundError: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+2026-11-10 13:20:57 [INFO] Retrying Code Generation (2/3)...
+2026-11-10 13:20:57 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3392, in post
+    response: Final = client.post(
+                      ^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 1567, in post
+    _raise_masked_sync_error(e, stream)
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 546, in _raise_masked_sync_error
+    raise MaskedHTTPStatusError(e, message=_text, text=_text) from None
+litellm.llms.custom_httpx.http_handler.MaskedHTTPStatusError: Client error '404 Not Found' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6149, in completion
+    response = _complete_vertex_ai_beta(_dispatch_ctx)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 3688, in _complete_vertex_ai_beta
+    return vertex_chat_completion.completion(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3410, in completion
+    first_response: Final = post(data)
+                            ^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3397, in post
+    raise VertexAIError(
+litellm.llms.vertex_ai.common_utils.VertexAIError: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai_litellm\litellm.py", line 68, in call
+    completion(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\chat_completions\dispatch.py", line 91, in completion
+    return _DISPATCH.run(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\rust_bridge\dispatch.py", line 81, in run
+    return python(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 2041, in wrapper
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 1890, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6230, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2800, in exception_type
+    raise e  # it's already mapped
+    ^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2611, in exception_type
+    _map_vertex_exception(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 1370, in _map_vertex_exception
+    raise NotFoundError(
+litellm.exceptions.NotFoundError: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+2026-11-10 13:20:57 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_c17e78ac3754ff4e222b7a6912087906" columns="[{"name": "City", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "Date", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "PM2_5", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "PM10", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NO", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NO2", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NOx", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NH3", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "CO", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "SO2", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "O3", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Benzene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Toluene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Xylene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "AQI", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "AQI_Bucket", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="29531x16">
+City,Date,PM2_5,PM10,NO,NO2,NOx,NH3,CO,SO2,O3,Benzene,Toluene,Xylene,AQI,AQI_Bucket
+Ahmedabad,2015-01-01,,,0.92,18.22,17.15,,0.92,27.64,133.36,0.0,0.02,0.0,,
+Ahmedabad,2015-01-02,,,0.97,15.69,16.46,,0.97,24.55,34.06,3.68,5.5,3.77,,
+Ahmedabad,2015-01-03,,,17.4,19.3,29.7,,17.4,29.07,30.7,6.8,16.4,2.25,,
+Ahmedabad,2015-01-04,,,1.7,18.48,17.97,,1.7,18.59,36.08,4.43,10.14,1.0,,
+Ahmedabad,2015-01-05,,,22.1,21.42,37.76,,22.1,39.33,39.31,7.01,18.89,2.78,,
+</table>
+
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+The user asked the following question:
+### QUERY
+ How many rows are present in this dataset?
+
+You generated the following Python code:
+None
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3392, in post
+    response: Final = client.post(
+                      ^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 1567, in post
+    _raise_masked_sync_error(e, stream)
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 546, in _raise_masked_sync_error
+    raise MaskedHTTPStatusError(e, message=_text, text=_text) from None
+litellm.llms.custom_httpx.http_handler.MaskedHTTPStatusError: Client error '404 Not Found' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6149, in completion
+    response = _complete_vertex_ai_beta(_dispatch_ctx)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 3688, in _complete_vertex_ai_beta
+    return vertex_chat_completion.completion(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3410, in completion
+    first_response: Final = post(data)
+                            ^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3397, in post
+    raise VertexAIError(
+litellm.llms.vertex_ai.common_utils.VertexAIError: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai_litellm\litellm.py", line 68, in call
+    completion(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\chat_completions\dispatch.py", line 91, in completion
+    return _DISPATCH.run(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\rust_bridge\dispatch.py", line 81, in run
+    return python(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 2041, in wrapper
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 1890, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6230, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2800, in exception_type
+    raise e  # it's already mapped
+    ^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2611, in exception_type
+    _map_vertex_exception(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 1370, in _map_vertex_exception
+    raise NotFoundError(
+litellm.exceptions.NotFoundError: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2026-11-10 13:20:58 [INFO] An error occurred during code generation: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+2026-11-10 13:20:58 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3392, in post
+    response: Final = client.post(
+                      ^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 1567, in post
+    _raise_masked_sync_error(e, stream)
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 546, in _raise_masked_sync_error
+    raise MaskedHTTPStatusError(e, message=_text, text=_text) from None
+litellm.llms.custom_httpx.http_handler.MaskedHTTPStatusError: Client error '404 Not Found' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6149, in completion
+    response = _complete_vertex_ai_beta(_dispatch_ctx)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 3688, in _complete_vertex_ai_beta
+    return vertex_chat_completion.completion(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3410, in completion
+    first_response: Final = post(data)
+                            ^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3397, in post
+    raise VertexAIError(
+litellm.llms.vertex_ai.common_utils.VertexAIError: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai_litellm\litellm.py", line 68, in call
+    completion(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\chat_completions\dispatch.py", line 91, in completion
+    return _DISPATCH.run(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\rust_bridge\dispatch.py", line 81, in run
+    return python(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 2041, in wrapper
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 1890, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6230, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2800, in exception_type
+    raise e  # it's already mapped
+    ^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2611, in exception_type
+    _map_vertex_exception(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 1370, in _map_vertex_exception
+    raise NotFoundError(
+litellm.exceptions.NotFoundError: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+2026-11-10 13:20:58 [INFO] Retrying Code Generation (3/3)...
+2026-11-10 13:20:58 [INFO] Execution failed with error: Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3392, in post
+    response: Final = client.post(
+                      ^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 1567, in post
+    _raise_masked_sync_error(e, stream)
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 546, in _raise_masked_sync_error
+    raise MaskedHTTPStatusError(e, message=_text, text=_text) from None
+litellm.llms.custom_httpx.http_handler.MaskedHTTPStatusError: Client error '404 Not Found' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6149, in completion
+    response = _complete_vertex_ai_beta(_dispatch_ctx)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 3688, in _complete_vertex_ai_beta
+    return vertex_chat_completion.completion(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3410, in completion
+    first_response: Final = post(data)
+                            ^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3397, in post
+    raise VertexAIError(
+litellm.llms.vertex_ai.common_utils.VertexAIError: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai_litellm\litellm.py", line 68, in call
+    completion(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\chat_completions\dispatch.py", line 91, in completion
+    return _DISPATCH.run(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\rust_bridge\dispatch.py", line 81, in run
+    return python(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 2041, in wrapper
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 1890, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6230, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2800, in exception_type
+    raise e  # it's already mapped
+    ^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2611, in exception_type
+    _map_vertex_exception(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 1370, in _map_vertex_exception
+    raise NotFoundError(
+litellm.exceptions.NotFoundError: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+2026-11-10 13:20:58 [INFO] Using Prompt: <table dialect="duckdb" table_name="table_c17e78ac3754ff4e222b7a6912087906" columns="[{"name": "City", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "Date", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "PM2_5", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "PM10", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NO", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NO2", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NOx", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NH3", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "CO", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "SO2", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "O3", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Benzene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Toluene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Xylene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "AQI", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "AQI_Bucket", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="29531x16">
+City,Date,PM2_5,PM10,NO,NO2,NOx,NH3,CO,SO2,O3,Benzene,Toluene,Xylene,AQI,AQI_Bucket
+Ahmedabad,2015-01-01,,,0.92,18.22,17.15,,0.92,27.64,133.36,0.0,0.02,0.0,,
+Ahmedabad,2015-01-02,,,0.97,15.69,16.46,,0.97,24.55,34.06,3.68,5.5,3.77,,
+Ahmedabad,2015-01-03,,,17.4,19.3,29.7,,17.4,29.07,30.7,6.8,16.4,2.25,,
+Ahmedabad,2015-01-04,,,1.7,18.48,17.97,,1.7,18.59,36.08,4.43,10.14,1.0,,
+Ahmedabad,2015-01-05,,,22.1,21.42,37.76,,22.1,39.33,39.31,7.01,18.89,2.78,,
+</table>
+
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+The user asked the following question:
+### QUERY
+ How many rows are present in this dataset?
+
+You generated the following Python code:
+None
+
+However, it resulted in the following error:
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3392, in post
+    response: Final = client.post(
+                      ^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 1567, in post
+    _raise_masked_sync_error(e, stream)
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 546, in _raise_masked_sync_error
+    raise MaskedHTTPStatusError(e, message=_text, text=_text) from None
+litellm.llms.custom_httpx.http_handler.MaskedHTTPStatusError: Client error '404 Not Found' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6149, in completion
+    response = _complete_vertex_ai_beta(_dispatch_ctx)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 3688, in _complete_vertex_ai_beta
+    return vertex_chat_completion.completion(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3410, in completion
+    first_response: Final = post(data)
+                            ^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3397, in post
+    raise VertexAIError(
+litellm.llms.vertex_ai.common_utils.VertexAIError: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\agent\base.py", line 176, in generate_code_with_retries
+    return self.generate_code(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\agent\base.py", line 119, in generate_code
+    code = self._code_generator.generate_code(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 52, in generate_code
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai_litellm\litellm.py", line 68, in call
+    completion(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\chat_completions\dispatch.py", line 91, in completion
+    return _DISPATCH.run(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\rust_bridge\dispatch.py", line 81, in run
+    return python(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 2041, in wrapper
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 1890, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6230, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2800, in exception_type
+    raise e  # it's already mapped
+    ^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2611, in exception_type
+    _map_vertex_exception(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 1370, in _map_vertex_exception
+    raise NotFoundError(
+litellm.exceptions.NotFoundError: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+
+Fix the python code above and return the new python code but the code generated should use execute_sql_query function
+2026-11-10 13:20:58 [INFO] An error occurred during code generation: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+2026-11-10 13:20:58 [INFO] Stack Trace:
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3392, in post
+    response: Final = client.post(
+                      ^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 1567, in post
+    _raise_masked_sync_error(e, stream)
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 546, in _raise_masked_sync_error
+    raise MaskedHTTPStatusError(e, message=_text, text=_text) from None
+litellm.llms.custom_httpx.http_handler.MaskedHTTPStatusError: Client error '404 Not Found' for url 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6149, in completion
+    response = _complete_vertex_ai_beta(_dispatch_ctx)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 3688, in _complete_vertex_ai_beta
+    return vertex_chat_completion.completion(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3410, in completion
+    first_response: Final = post(data)
+                            ^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\llms\vertex_ai\gemini\vertex_and_google_ai_studio_gemini.py", line 3397, in post
+    raise VertexAIError(
+litellm.llms.vertex_ai.common_utils.VertexAIError: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\core\code_generation\base.py", line 33, in generate_code
+    code = self._context.config.llm.generate_code(prompt, self._context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai\llm\base.py", line 173, in generate_code
+    response = self.call(instruction, context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\pandasai_litellm\litellm.py", line 68, in call
+    completion(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\chat_completions\dispatch.py", line 91, in completion
+    return _DISPATCH.run(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\rust_bridge\dispatch.py", line 81, in run
+    return python(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 2041, in wrapper
+    raise e
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\utils.py", line 1890, in wrapper
+    result = original_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\main.py", line 6230, in completion
+    raise exception_type(
+          ^^^^^^^^^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2800, in exception_type
+    raise e  # it's already mapped
+    ^^^^^^^
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2611, in exception_type
+    _map_vertex_exception(
+  File "C:\Users\konic\.conda\envs\pandasai-env\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 1370, in _map_vertex_exception
+    raise NotFoundError(
+litellm.exceptions.NotFoundError: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+
+2026-11-10 13:20:58 [INFO] Maximum retry attempts exceeded. Last error: litellm.NotFoundError: GeminiException - {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+    "status": "NOT_FOUND"
+  }
+}
+
+2026-11-10 13:22:37 [INFO] Question: How many rows are present in this dataset?
+2026-11-10 13:22:38 [INFO] Running PandasAI with litellm LLM...
+2026-11-10 13:22:38 [INFO] Prompt ID: d933caff-80f0-484d-be34-948cf1980784
+2026-11-10 13:22:38 [INFO] Generating new code...
+2026-11-10 13:22:38 [INFO] Using Prompt: <tables>
+
+<table dialect="duckdb" table_name="table_c17e78ac3754ff4e222b7a6912087906" columns="[{"name": "City", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "Date", "type": "string", "description": null, "expression": null, "alias": null}, {"name": "PM2_5", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "PM10", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NO", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NO2", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NOx", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "NH3", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "CO", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "SO2", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "O3", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Benzene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Toluene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "Xylene", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "AQI", "type": "float", "description": null, "expression": null, "alias": null}, {"name": "AQI_Bucket", "type": "string", "description": null, "expression": null, "alias": null}]" dimensions="29531x16">
+City,Date,PM2_5,PM10,NO,NO2,NOx,NH3,CO,SO2,O3,Benzene,Toluene,Xylene,AQI,AQI_Bucket
+Ahmedabad,2015-01-01,,,0.92,18.22,17.15,,0.92,27.64,133.36,0.0,0.02,0.0,,
+Ahmedabad,2015-01-02,,,0.97,15.69,16.46,,0.97,24.55,34.06,3.68,5.5,3.77,,
+Ahmedabad,2015-01-03,,,17.4,19.3,29.7,,17.4,29.07,30.7,6.8,16.4,2.25,,
+Ahmedabad,2015-01-04,,,1.7,18.48,17.97,,1.7,18.59,36.08,4.43,10.14,1.0,,
+Ahmedabad,2015-01-05,,,22.1,21.42,37.76,,22.1,39.33,39.31,7.01,18.89,2.78,,
+</table>
+
+
+</tables>
+
+The following functions have already been provided. Please use them as needed and do not redefine them.
+<function>
+def execute_sql_query(sql_query: str) -> pd.DataFrame
+    """This method connects to the database, executes the sql query and returns the dataframe"""
+</function>
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ How many rows are present in this dataset?
+
+At the end, declare "result" variable as a dictionary of type and value in the following format:
+
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+
+
+Generate python code and return full updated code:
+
+### Note: Use only relevant table for query and do aggregation, sorting, joins and grouby through sql query
+2026-11-10 13:26:41 [INFO] Code Generated:
+# import the required dependencies
+import pandas as pd
+
+# Execute the query to count rows in the dataset
+query = "SELECT COUNT(*) as row_count FROM table_c17e78ac3754ff4e222b7a6912087906"
+df = execute_sql_query(query)
+
+row_count = int(df["row_count"].iloc[0])
+
+# Declare result var
+result = {"type": "number", "value": row_count}
+2026-11-10 13:26:41 [INFO] Validating code requirements...
+2026-11-10 13:26:41 [INFO] Code validation successful.
+2026-11-10 13:26:41 [INFO] Cleaning the generated code...
+2026-11-10 13:26:41 [INFO] Executing code: import pandas as pd
+query = 'SELECT COUNT(*) as row_count FROM table_c17e78ac3754ff4e222b7a6912087906'
+df = execute_sql_query(query)
+row_count = int(df['row_count'].iloc[0])
+result = {'type': 'number', 'value': row_count}
+2026-11-10 13:26:43 [INFO] generated new fontManager
+2026-11-10 13:26:44 [INFO] Response generated successfully.
