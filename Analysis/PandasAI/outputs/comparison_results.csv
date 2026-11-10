@@ -1,0 +1,4 @@
+Question,PandasAI_Answer,Manual_Pandas_Answer,Status
+How many records are present in this dataset?,,29531,Failed
+"What is the overall average AQI, excluding missing values?",,166.46,Failed
+"Which AQI_Bucket category occurs most frequently, excluding missing values?",,Moderate,Failed
